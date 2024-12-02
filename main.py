@@ -96,7 +96,7 @@ model.fit(X_train, y_train)
 # Evaluate the model
 predictions = model.predict(X_test)
 mse = mean_squared_error(y_test, predictions)
-# print(f"Mean Squared Error: {mse}")
+print(f"Mean Squared Error: {mse}")
 print(f"Accuratcy: {mse*1000}%")
 
 # Save the model
