@@ -8,7 +8,7 @@ from sklearn.metrics import mean_squared_error
 import xml.etree.ElementTree as ET
 
 # Define paths based on the extracted structure
-RAW_IMAGES_PATH = "D:\Data\Before"  # Raw images from the "Before" folder
+RAW_IMAGES_PATH = "D:\my-project\Data\Before"  # Raw images from the "Before" folder
 XMP_FILES_PATH = "Data\\Data"  # XMP files are in subfolders named numerically
 
 def extract_features(image_path):
@@ -61,7 +61,8 @@ def load_data():
                 print("Failed to extract features from:", raw_path)
             # Extract subfolder name from the file name (e.g., Raw-1.jpg -> 1)
             subfolder_name = raw_file.split("-")[1].split(".")[0]
-            xmp_file = f"{"D:\Data"}\\{subfolder_name}\\{subfolder_name}.xmp"
+            # xmp_file = f"{"Data"}\\{subfolder_name}\\{subfolder_name}.xmp"
+            xmp_file = f"D:\my-project\Data\\{subfolder_name}\\{subfolder_name}.xmp"
             print(xmp_file)
             xmp_path = os.path.join(XMP_FILES_PATH, xmp_file)
             if os.path.exists(xmp_path):
