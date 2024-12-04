@@ -8,8 +8,8 @@ from sklearn.metrics import mean_squared_error
 import xml.etree.ElementTree as ET
 
 # Define paths based on the extracted structure
-RAW_IMAGES_PATH = "D:\Data\Before"  # Raw images from the "Before" folder
-XMP_FILES_PATH = "Data\\Data"  # XMP files are in subfolders named numerically
+RAW_IMAGES_PATH = "D:\my-project\Data\Before"  # Raw images from the "Before" folder
+XMP_FILES_PATH = "D:\my-project\Data\Xmp"  # XMP files are in subfolders named numerically
 
 def extract_features(image_path):
     """
@@ -60,15 +60,15 @@ def load_data():
             if feature is None:
                 print("Failed to extract features from:", raw_path)
             # Extract subfolder name from the file name (e.g., Raw-1.jpg -> 1)
-            subfolder_name = raw_file.split("-")[1].split(".")[0]
-            xmp_file = f"{"D:\Data"}\\{subfolder_name}\\{subfolder_name}.xmp"
-            print(xmp_file)
+            subfile_name = raw_file.split("-")[1].split(".")[0]
+            xmp_file = f"{"D:\my-project\Data\Xmp\Raw-"}{subfile_name}.xmp"
             xmp_path = os.path.join(XMP_FILES_PATH, xmp_file)
             if os.path.exists(xmp_path):
                 # Extract features and labels
                 feature = extract_features(raw_path)
                 if feature is not None:
                     print("Parsing XMP File:", xmp_path)
+
                     label = parse_xmp(xmp_path)
                     if label is None:
                         print("Failed to parse exposure from:", xmp_path)
@@ -76,6 +76,7 @@ def load_data():
                     if label is not None:
                         features.append(feature)
                         labels.append(label)
+    print("-"*50)
     return np.array(features), np.array(labels)
 
 print("Raw Images Path:", RAW_IMAGES_PATH)
@@ -97,7 +98,6 @@ model.fit(X_train, y_train)
 predictions = model.predict(X_test)
 mse = mean_squared_error(y_test, predictions)
 print(f"Mean Squared Error: {mse}")
-print(f"Accuratcy: {mse*1000}%")
 
 # Save the model
 import joblib
