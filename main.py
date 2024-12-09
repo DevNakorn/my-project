@@ -51,8 +51,9 @@ def parse_xmp(file_path):
 def load_data():
     features = []
     labels = []
+    count = 0
     for raw_file in os.listdir(RAW_IMAGES_PATH):
-
+        
         if raw_file.endswith(".jpg"):  # Adjust if using other raw formats
             raw_path = os.path.join(RAW_IMAGES_PATH, raw_file)
             print("Processing Image:", raw_path)
@@ -62,13 +63,14 @@ def load_data():
             # Extract subfolder name from the file name (e.g., Raw-1.jpg -> 1)
             subfile_name = raw_file.split("-")[1].split(".")[0]
             xmp_file = f"{"D:\my-project\Data\Xmp\Raw-"}{subfile_name}.xmp"
+            
             xmp_path = os.path.join(XMP_FILES_PATH, xmp_file)
             if os.path.exists(xmp_path):
                 # Extract features and labels
                 feature = extract_features(raw_path)
                 if feature is not None:
                     print("Parsing XMP File:", xmp_path)
-
+                    count+=1
                     label = parse_xmp(xmp_path)
                     if label is None:
                         print("Failed to parse exposure from:", xmp_path)
@@ -77,6 +79,7 @@ def load_data():
                         features.append(feature)
                         labels.append(label)
     print("-"*50)
+    print(f"Total xmp files: {count}")   
     return np.array(features), np.array(labels)
 
 print("Raw Images Path:", RAW_IMAGES_PATH)
@@ -93,6 +96,7 @@ X_train, X_test, y_train, y_test = train_test_split(features, labels, test_size=
 # Train the model
 model = RandomForestRegressor(n_estimators=100, random_state=42)
 model.fit(X_train, y_train)
+
 
 # Evaluate the model
 predictions = model.predict(X_test)
