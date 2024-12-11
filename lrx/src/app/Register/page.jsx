@@ -29,36 +29,7 @@ const Register = () => {
       return;
     }
 
-    // try
-    // {
-    //     const res = await fetch("http://localhost:3000/api/register", 
-    //     {
-    //         method : 'POST',
-    //         headers : 
-    //         {
-    //             "Content-Type" :"apllication/json"
-    //         },
-    //         body: JSON.stringify
-    //         ({
-    //             username, email, password
-    //         })
-    //     })
-    //     if (res.ok) 
-    //     {
-    //         const form = e.target
-    //         setError('')
-    //         form.reset()
-    //     }
-    //     else
-    //     { 
-    //         console.log("Something Error")
-    //     }
-
-    // }
-    // catch(error)
-    // {
-    //     console.log("Error during ")
-    // }
+    
     
         
     }
