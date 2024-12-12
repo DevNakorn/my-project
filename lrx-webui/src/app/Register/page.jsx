@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Nav from "../components/Nav";
+import Link from "next/link";
 
 
 const Register = () => {
@@ -46,7 +47,7 @@ const Register = () => {
         <form onSubmit={handleSubmit} className="flex flex-col p-3">
           {error && (
             <div className="flex justify-center mb-4">
-            <p className="text-red-500 text-center border  h-[40px] flex items-center justify-center rounded-lg w-[220px]">
+            <p className="text-white bg-red-500 text-center border  h-[40px] flex items-center justify-center rounded-lg w-[220px]">
               {error}
             </p>
           </div>
@@ -87,6 +88,10 @@ const Register = () => {
               Register
             </button>
           </div>
+            <div className="flex mt-3">
+            <p className="text-slate-500">Already have an account?</p>
+            <p className="ms-1 text-slate-600 hover:underline cursor-pointer"><Link href={'/Login'}>Login</Link></p>
+            </div>
         </form>
       </div>
     </>
