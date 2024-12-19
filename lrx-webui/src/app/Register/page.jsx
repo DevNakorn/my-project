@@ -54,28 +54,28 @@ const Register = () => {
           )}
           <input
             onChange={(e) => setUsername(e.target.value)}
-            className="border rounded-lg m-2 h-10 p-3 duration-300 border-black hover:scale-105 hover:border-2"
+            className="border rounded-lg m-2 h-10 p-3 duration-300 border-black hover:scale-105"
             type="text"
             name="username"
             placeholder="Username"
           />
           <input
             onChange={(e) => setEmail(e.target.value)}
-            className="border rounded-lg m-2 h-10 p-3 duration-300 border-black hover:scale-105 hover:border-2"
+            className="border rounded-lg m-2 h-10 p-3 duration-300 border-black hover:scale-10"
             type="email"
             name="email"
             placeholder="Email"
           />
           <input
             onChange={(e) => setPassword(e.target.value)}
-            className="border rounded-lg m-2 h-10 p-3 duration-300 border-black hover:scale-105 hover:border-2"
+            className="border rounded-lg m-2 h-10 p-3 duration-300 border-black hover:scale-105"
             type="password"
             name="password"
             placeholder="Password"
           />
           <input
             onChange={(e) => setConfirm_password(e.target.value)}
-            className="border rounded-lg m-2 h-10 p-3 duration-300 border-black hover:scale-105 hover:border-2"
+            className="border rounded-lg m-2 h-10 p-3 duration-300 border-black hover:scale-105"
             type="password"
             name="confirm_password"
             placeholder="Confirm Password"
@@ -90,7 +90,7 @@ const Register = () => {
           </div>
             <div className="flex mt-3">
             <p className="text-slate-500">Already have an account?</p>
-            <p className="ms-1 text-slate-600 hover:underline cursor-pointer"><Link href={'/Login'}>Login</Link></p>
+            <p className="ms-1 text-slate-600 hover:underline cursor-pointer hover:text-[#092093]"><Link href={'/Login'}>Login</Link></p>
             </div>
         </form>
       </div>
